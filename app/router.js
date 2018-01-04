@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('dom-update');
+  this.route('runloop-queues');
 });
 
 export default Router;
