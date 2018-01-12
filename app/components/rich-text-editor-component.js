@@ -10,7 +10,6 @@ export default Component.extend({
       }),
     
       setupEditor: function(editor) {
-        this.set('editor', editor);
         editor.on('change', function() {
           console.log('content changed!');
         });

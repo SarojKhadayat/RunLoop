@@ -1,26 +1,65 @@
 import Component from '@ember/component';
 import Ember  from 'ember';
-export default Component.extend({    
-        firstName:"hello",
-        lastName:"world",       
-        fullName:Ember.computed("firstName","lastName",function(){          
-            return this.get('firstName') + ' ' + this.get('lastName')             
-         }),
-         actions:{
-            setValues(){              
-                this.set("firstName","Saroj");
-                this.set("lastName","Khadayat");
-                this.set("firstName","suman");
-                this.set("lastName","adhikari");
-            }
-
+import { run } from '@ember/runloop';
+import Object from '@ember/object';
+const Person = Object.extend({
+    firstName:"hello",
+    lastName:"world",       
+    fullName:Ember.computed("firstName","lastName",function(){          
+        return this.get('firstName') + ' ' + this.get('lastName')             
+     })      
+  });
+export default Component.extend({        
+    person: Person.create(),
+    shouldShowComponent:true,
+    actions:{
+        setValues(){              
+            this.person.set("firstName","Tom");
+                // {{firstName}} and {{fullName}} are updated
+            this.person.set("lastName","Cruise");       
+                // {{lastName}} and {{fullName}} are updated     
+            console.log(run.queues);
+            },
+        // showOrHide(){
+        //     this.toggleProperty('shouldShowComponent');
+        // }
+        showOrHide(){
+            this.set('shouldShowComponent',true);
+            this.set('shouldShowComponent',false);
+            this.set('shouldShowComponent',true);
+            this.set('shouldShowComponent',false);
+            // this.set('shouldShowComponent',true);
+        //     run.schedule('afterRender',this,()=>{
+        //     this.set('shouldShowComponent',false)
+        // });           
+        }
+        // showOrHide(){
+        //     run(()=>{
+        //     this.set('shouldShowComponent',true);
+        //     });
+        //     run(()=>{
+        //     this.set('shouldShowComponent',false);
+        //     });
+        //     run(()=>{
+        //     this.set('shouldShowComponent',true);
+        //     });
+        //     run(()=>{
+        //     this.set('shouldShowComponent',false);
+        //     });
+        //     run(()=>{
+        //     this.set('shouldShowComponent',true);
+        //     });
+        //     run(()=>{
+        //     this.set('shouldShowComponent',true);  
+        //     });              
+        // }
             // setValues(){
-            //     this.set("firstName","Saroj");
-            //     this.set("lastName","Khadayat");
-            //     this.set("firstName","Test");
-            //     this.set("lastName","Hello");
-            //     this.set("firstName","hello");
-            //     this.set("lastName","world");
+            //     this.person.set("firstName","Tom");
+            //     this.person.set("lastName","Cruise");
+            //     this.person.set("firstName","Test");
+            //     this.person.set("lastName","Hello");
+            //     this.person.set("firstName","hello");
+            //     this.person.set("lastName","world");
             // }
          }
 });

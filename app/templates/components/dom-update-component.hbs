@@ -1,9 +1,17 @@
 <h2> Dom update component demo</h2>
 <button {{action "setValues" class="w3-button"}}>set</button>
 <div style="margin-top:10px;background-color:darkgrey">
-First Name: {{firstName}}<br>
-Last Name: {{lastName}}<br>
-Full Name: {{fullName}}<br>
-count:{{count}}
+First Name: {{person.firstName}}<br>
+Last Name: {{person.lastName}}<br>
+Full Name: {{person.fullName}}<br>
 </div>
+<h2>Batching Example:</h2>
+
+{{#if shouldShowComponent}}
+{{show-hide-component shouldShowComponent=shouldShowComponent}}
+{{else}}
+<h1>Component not rendered</h1>
+{{/if}}
+<button {{action "showOrHide"}} >Click to hide </button>
+
 {{yield}}

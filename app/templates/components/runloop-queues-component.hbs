@@ -1,6 +1,13 @@
 
-<h3>Demo for runloop queues</h3>
+<h2>Demo for runloop queues</h2>
 <button {{action "triggerQueues" class="w3-button"}}>set</button>
-
+<div>
+    <h2>
+        Debounce,Throttle Example:
+    </h2>
+{{input type="text" key-up='triggerKeyUp' value=textValue}}
+{{newTextValue}}
+</div>
+{{result}}
 
 {{yield}}
