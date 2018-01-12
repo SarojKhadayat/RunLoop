@@ -7,7 +7,10 @@ const Person = Object.extend({
     lastName:"world",       
     fullName:Ember.computed("firstName","lastName",function(){          
         return this.get('firstName') + ' ' + this.get('lastName')             
-     })      
+     }),
+     newFullName:Ember.observer("firstName","lastName",function(){          
+        console.log('observer executing');
+     }),   
   });
 export default Component.extend({        
     person: Person.create(),
